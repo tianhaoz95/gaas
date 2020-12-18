@@ -19,6 +19,9 @@ class ImageColoringGeneratorDecoderBlock(Model):
         super(ImageColoringGeneratorDecoderBlock, self).__init__()
 
     def call(self, x):
+        # TODO: Port the forward pass for decoder block
+        #   This is similar to the decoder_block in the post.
+        #   However, it will be converted to TF2 style.
         pass
 
 
@@ -28,6 +31,9 @@ class ImageColoringGeneratorModel(Model):
         super(ImageColoringGeneratorModel, self).__init__()
 
     def call(self, x):
+        # TODO: Port the forward pass for generator
+        #   This is similar to the define_generator in the post.
+        #   However, it will be converted to TF2 style.
         pass
 
 
@@ -37,4 +43,7 @@ class ImageColoringDiscriminatorModel(Model):
         super(ImageColoringDiscriminatorModel, self).__init__()
 
     def call(self, x):
+        # TODO: Port the forward pass for discriminator
+        #   This is similar to the define_discriminator in the post.
+        #   However, it will be converted to TF2 style.
         pass
