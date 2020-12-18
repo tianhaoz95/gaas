@@ -9,7 +9,6 @@ class ImageColoringGeneratorEncoderBlock(Model):
     def call(self, x):
         # TODO Implement the forward pass for encoder block
         #   This is similar to the define_encoder_block in the post.
-        #   assignees: emzak208
         pass
 
 
