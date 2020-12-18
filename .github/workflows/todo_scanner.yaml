@@ -4,7 +4,7 @@ on:
     branches:
       - "main"
 jobs:
-  build:
+  scan:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@master"
@@ -14,3 +14,4 @@ jobs:
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BEFORE: ${{ github.event.before }}
+          LABEL: "#// TODO:"
