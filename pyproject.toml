@@ -1,0 +1,15 @@
+# pyproject.toml
+[tool.pytest.ini_options]
+minversion = "6.0"
+python_files = [
+    "*_test.py",
+]
+python_classes = [
+    "*Tests"
+]
+python_functions = [
+    "test_*"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:"
+]

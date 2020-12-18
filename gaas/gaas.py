@@ -1,2 +1,2 @@
-def sanity_check()-> None:
+def sanity_check() -> None:
     print('Hello World!')
