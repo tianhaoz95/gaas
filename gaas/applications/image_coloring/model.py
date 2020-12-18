@@ -9,6 +9,7 @@ class ImageColoringGeneratorEncoderBlock(Model):
     def call(self, x):
         # TODO: Implement the forward pass for encoder block
         #   This is similar to the define_encoder_block in the post.
+        #   However, it will be converted to TF2 style.
         pass
 
 

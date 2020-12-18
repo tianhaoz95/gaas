@@ -13,5 +13,3 @@ jobs:
         id: "todo"
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BEFORE: ${{ github.event.before }}
-          LABEL: "#// TODO:"
