@@ -1,5 +1,7 @@
 import argparse
 
+from gaas.applications.image_coloring.utils.generate_mini_dataset import \
+    generate_mini_dataset
 from gaas.config import global_logger
 
 parser = argparse.ArgumentParser(description='CLI utilities for GAAS')
@@ -14,6 +16,7 @@ generate_mini_dataset_opts.add_argument('--app',
 def main():
     args = parser.parse_args()
     global_logger.info(args)
+    generate_mini_dataset()
     global_logger.info('Done.')
 
 

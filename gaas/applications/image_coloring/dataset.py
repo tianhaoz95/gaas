@@ -3,35 +3,36 @@ import os
 import zipfile
 from subprocess import PIPE, Popen
 
-from gaas.applications.image_coloring.config import \
-    ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID
-from gaas.config import DATA_DIR
+from gaas.applications.image_coloring.config import (
+    ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID,
+    ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID)
+from gaas.utils.exec_mode import get_data_root
+from gaas.utils.kaggle import (get_extract_location, get_kaggle_dataset_id,
+                               get_zipfile_location)
 
 
 class AnimeSketchColorizationDatasetGenerator:
 
-    def __init__(self) -> None:
+    def __init__(self, type: str = 'ENV') -> None:
         self._kaggle_id = ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID
-        self._dataset_id = 'anime-sketch-colorization-pair'
-        self._target_dataset = '{kaggle_id}/{dataset_id}'.format(
-            kaggle_id=self._kaggle_id, dataset_id=self._dataset_id)
+        self._dataset_id = ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID
+        self._target_dataset = get_kaggle_dataset_id(self._kaggle_id,
+                                                     self._dataset_id)
         self._fetch_kaggle_dataset_args = [
             'kaggle', 'datasets', 'download', self._target_dataset
         ]
-        self._zipfile_filename = '{filename}.zip'.format(
-            filename=self._dataset_id)
-        self._zipfile_location = os.path.join(DATA_DIR, self._zipfile_filename)
-        self._extract_location = os.path.join(DATA_DIR, self._dataset_id)
+        self._data_dir = get_data_root(type)
+        self._zipfile_location = get_zipfile_location(self._data_dir,
+                                                      self._dataset_id)
+        self._extract_location = get_extract_location(self._data_dir,
+                                                      self._dataset_id)
         self._logger = logging.getLogger()
         self._maybe_fetch_kaggle_dataset()
         self._maybe_extract_kaggle_dataset()
 
-    def get_dataset_location(self) -> str:
-        return self._extract_location
-
     def _maybe_fetch_kaggle_dataset(self) -> None:
         proc = Popen(self._fetch_kaggle_dataset_args,
-                     cwd=DATA_DIR,
+                     cwd=self._data_dir,
                      stdin=PIPE,
                      stdout=PIPE,
                      stderr=PIPE)
