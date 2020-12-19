@@ -4,6 +4,6 @@ image:
 tasks:
   - init: |
       pip install virtualenv
-      python -m virtualenv .venv
+      python -m virtualenv --system-site-packages .venv
       source .venv/bin/activate
       pip install -r ./requirements.txt
