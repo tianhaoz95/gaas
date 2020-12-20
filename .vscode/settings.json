@@ -27,8 +27,11 @@
         "**/data/**": true
     },
     "cSpell.words": [
+        "Popen",
         "filesys",
         "gaas",
-        "kaggle"
+        "kaggle",
+        "ktaebum",
+        "tianhaoz"
     ]
 }

@@ -1,6 +1,5 @@
 import os
 from subprocess import PIPE, Popen
-from typing import Optional
 
 from gaas.applications.image_coloring.config import (
     ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID,
