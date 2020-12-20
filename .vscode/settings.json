@@ -25,5 +25,10 @@
         "**/node_modules/**": true,
         "**/.hg/store/**": true,
         "**/data/**": true
-    }
+    },
+    "cSpell.words": [
+        "filesys",
+        "gaas",
+        "kaggle"
+    ]
 }

@@ -1,4 +1,3 @@
-import itertools
 import pathlib
 
 from gaas.applications.image_coloring.config import \
@@ -34,4 +33,9 @@ def generate_mini_dataset() -> None:
     """
     data_ids = []
     for colorgram_file in colorgram_files:
+        data_id = colorgram_file.split('.')[0]
+        data_ids.append(data_id)
+    subset_ids = data_ids[:10]
+    for subset_id in subset_ids:
+        # Copy colorgram
         pass
