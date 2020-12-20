@@ -2,7 +2,7 @@ import logging
 import os
 import zipfile
 from subprocess import PIPE, Popen
-
+from gaas.utils.filesys import create_dir_if_not_exist
 from gaas.applications.image_coloring.config import (
     ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID,
     ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID)
@@ -22,6 +22,7 @@ class AnimeSketchColorizationDatasetGenerator:
             'kaggle', 'datasets', 'download', self._target_dataset
         ]
         self._data_dir = get_data_root(type)
+        create_dir_if_not_exist(self._data_dir)
         self._zipfile_location = get_zipfile_location(self._data_dir,
                                                       self._dataset_id)
         self._extract_location = get_extract_location(self._data_dir,

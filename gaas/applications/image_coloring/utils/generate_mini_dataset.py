@@ -32,3 +32,6 @@ def generate_mini_dataset() -> None:
     3) Move the corresponding files to the mini set.
     4) Zip the files to mimic the downloading process.
     """
+    data_ids = []
+    for colorgram_file in colorgram_files:
+        pass
