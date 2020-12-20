@@ -11,6 +11,10 @@ parser.add_argument('--app',
                     type=str,
                     required=True,
                     help='The name of the application.')
+parser.add_argument('--command',
+                    type=str,
+                    required=True,
+                    help='The command to execute.')
 
 
 def main():
