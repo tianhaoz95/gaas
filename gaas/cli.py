@@ -20,7 +20,7 @@ parser.add_argument('--command',
 def main():
     args = parser.parse_args()
     global_logger.info(args)
-    if parser.command == 'generate_mini_dataset':
+    if args.command == 'generate_mini_dataset':
         generate_mini_dataset()
     global_logger.info('Done.')
 
