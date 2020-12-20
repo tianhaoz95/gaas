@@ -25,3 +25,11 @@ cd gaas && python -m virtualenv .venv
 # Activate the virtual environment and install dependencies.
 source .venv/bin/activate && pip install -r requirements.txt
 ```
+
+### CLI options
+
+Use the following command to check available CLI options:
+
+```bash
+python -m gaas.cli --help
+```

@@ -27,11 +27,14 @@
         "**/data/**": true
     },
     "cSpell.words": [
+        "Gitpod",
         "Popen",
         "filesys",
         "gaas",
         "kaggle",
         "ktaebum",
-        "tianhaoz"
+        "tianhaoz",
+        "venv",
+        "virtualenv"
     ]
 }
