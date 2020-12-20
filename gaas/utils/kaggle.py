@@ -1,4 +1,46 @@
 import os
+from subprocess import PIPE, Popen
+from typing import Optional
+
+from gaas.applications.image_coloring.config import (
+    ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID,
+    ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID)
+from gaas.config import (KAGGLE_KEY_ENV_ID, KAGGLE_USERNAME_ENV_ID,
+                         global_logger)
+
+
+class KaggleCredential:
+
+    def __init__(self, username: str, key: str) -> None:
+        self.username = username
+        self.key = key
+
+
+def maybe_fetch_kaggle_dataset(data_root: str, kaggle_id: str, dataset_id: str,
+                               kaggle_credential: KaggleCredential) -> None:
+    kaggle_id = ANIME_SKETCH_COLORIZATION_DATASET_KAGGLE_ID
+    dataset_id = ANIME_SKETCH_COLORIZATION_DATASET_DATASET_ID
+    target_dataset = get_kaggle_dataset_id(kaggle_id, dataset_id)
+    fetch_kaggle_dataset_args = [
+        'kaggle', 'datasets', 'download', target_dataset
+    ]
+    fork_env = os.environ
+    fork_env[KAGGLE_USERNAME_ENV_ID] = kaggle_credential.username
+    fork_env[KAGGLE_KEY_ENV_ID] = kaggle_credential.key
+    proc = Popen(fetch_kaggle_dataset_args,
+                 cwd=data_root,
+                 env=fork_env,
+                 stdin=PIPE,
+                 stdout=PIPE,
+                 stderr=PIPE)
+    _, stderr = proc.communicate()
+    if proc.returncode != 0:
+        global_logger.error(
+            'Fetch dataset from Kaggle failed with return code {ret}'.format(
+                ret=proc.returncode))
+        global_logger.error('Error message: {msg}'.format(msg=stderr))
+        raise RuntimeError('Fetch Kaggle dataset failed.')
+    global_logger.info('Fetch Kaggle dataset done.')
 
 
 def get_kaggle_dataset_id(kaggle_id: str, dataset_id: str) -> str:
