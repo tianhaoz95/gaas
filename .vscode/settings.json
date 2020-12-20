@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": ".venv/bin/python",
     "editor.formatOnSave": true,
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
