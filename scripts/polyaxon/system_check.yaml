@@ -9,4 +9,4 @@ run:
   container:
     image: "tensorflow/tensorflow:latest-gpu"
     workingDir: "{{ globals.artifacts_path }}/gaas"
-    command: ["python3", "-m", "gaas.cli"]
+    command: ["python", "-m", "gaas.cli"]
