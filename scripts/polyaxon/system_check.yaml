@@ -1,6 +1,6 @@
 version: 1.1
 kind: component
-name: "system check"
+name: systen_check
 description: "System check for training pipeline."
 run:
   kind: job
