@@ -6,6 +6,7 @@ from gaas.applications.image_coloring.utils.generate_mini_dataset import \
     generate_mini_dataset
 from gaas.config import global_logger
 from gaas.utils.github import show_kaggle_credential
+from gaas.utils.system_check import run_system_check
 
 parser = argparse.ArgumentParser(description='CLI utilities for GAAS')
 
@@ -19,6 +20,8 @@ parser.add_argument('--action',
 def main():
     args = parser.parse_args()
     global_logger.info(args)
+    if args.action == 'system_check':
+        run_system_check()
     if args.action == 'fetch_kaggle_credential':
         show_kaggle_credential()
     if args.action == 'fetch_kaggle_dataset':
