@@ -9,4 +9,4 @@ run:
   container:
     image: "tensorflow/tensorflow:latest-gpu"
     workingDir: "{{ globals.artifacts_path }}/gaas"
-    command: ["python", "-m", "gaas.cli", "--action", "system_check"]
+    command: ["sh", "-c", "./scripts/polyaxon/system_check.sh"]
