@@ -24,7 +24,10 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/.hg/store/**": true,
-        "**/data/**": true
+        "**/data/**": true,
+        "**/__pycache__/**": true,
+        "**/.venv/**": true,
+        "**/.pytest_cache/**": true
     },
     "cSpell.words": [
         "Gitpod",
