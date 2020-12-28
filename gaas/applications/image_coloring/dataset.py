@@ -10,7 +10,9 @@ from gaas.utils.exec_mode import get_data_root
 from gaas.utils.filesys import create_dir_if_not_exist
 from gaas.utils.github import get_kaggle_credential
 from gaas.utils.kaggle import (get_extract_location, get_kaggle_dataset_id,
-                               get_zipfile_location, maybe_fetch_kaggle_dataset)
+                               get_zipfile_location,
+                               maybe_extract_kaggle_dataset,
+                               maybe_fetch_kaggle_dataset)
 
 
 class AnimeSketchColorizationDatasetGenerator:
@@ -33,14 +35,5 @@ class AnimeSketchColorizationDatasetGenerator:
         self._kaggle_credential = get_kaggle_credential()
         maybe_fetch_kaggle_dataset(self._data_dir, self._kaggle_id,
                                    self._dataset_id, self._kaggle_credential)
-        self._maybe_extract_kaggle_dataset()
-
-    def _maybe_extract_kaggle_dataset(self) -> None:
-        if os.path.exists(self._extract_location):
-            self._logger.warn(
-                'The {dest} directory already exist. Skip.'.format(
-                    dest=self._extract_location))
-            return
-        with zipfile.ZipFile(self._zipfile_location, 'r') as zip_ref:
-            zip_ref.extractall(self._extract_location)
-        self._logger.info('Extract dataset done.')
+        maybe_extract_kaggle_dataset(self._extract_location,
+                                     self._zipfile_location)

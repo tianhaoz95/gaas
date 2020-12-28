@@ -1,4 +1,5 @@
 import os
+import zipfile
 from subprocess import PIPE, Popen
 
 from gaas.applications.image_coloring.config import (
@@ -13,6 +14,17 @@ class KaggleCredential:
     def __init__(self, username: str, key: str) -> None:
         self.username = username
         self.key = key
+
+
+def maybe_extract_kaggle_dataset(extract_location: str,
+                                 zipfile_location: str) -> None:
+    if os.path.exists(extract_location):
+        global_logger.warn('The {dest} directory already exist. Skip.'.format(
+            dest=extract_location))
+        return
+    with zipfile.ZipFile(zipfile_location, 'r') as zip_ref:
+        zip_ref.extractall(extract_location)
+    global_logger.info('Extract dataset done.')
 
 
 def maybe_fetch_kaggle_dataset(data_root: str, kaggle_id: str, dataset_id: str,
