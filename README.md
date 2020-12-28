@@ -33,3 +33,7 @@ Use the following command to check available CLI options:
 ```bash
 python -m gaas.cli --help
 ```
+
+## Useful links
+
+* [Credential repository](https://github.com/tianhaoz95/gaas-credentials)
