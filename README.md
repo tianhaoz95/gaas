@@ -34,6 +34,12 @@ Use the following command to check available CLI options:
 python -m gaas.cli --help
 ```
 
+#### Train model
+
+```bash
+python -m gaas.cli --action train --app image_coloring
+```
+
 ## Useful links
 
 * [Credential repository](https://github.com/tianhaoz95/gaas-credentials)

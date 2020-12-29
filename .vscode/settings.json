@@ -25,17 +25,18 @@
         "**/node_modules/**": true,
         "**/.hg/store/**": true,
         "**/data/**": true,
-        "**/__pycache__/**": true,
-        "**/.venv/**": true,
-        "**/.pytest_cache/**": true
+        "**/.venv/**": true
     },
     "cSpell.words": [
         "Gitpod",
         "Popen",
+        "dtype",
         "filesys",
         "gaas",
         "kaggle",
+        "keras",
         "ktaebum",
+        "numpy",
         "tianhaoz",
         "venv",
         "virtualenv"

@@ -47,3 +47,17 @@ class ImageColoringDiscriminatorModel(Model):
         #   This is similar to the define_discriminator in the post.
         #   However, it will be converted to TF2 style.
         pass
+
+
+class ImageColoringGanModel(Model):
+
+    def __init__(self, generator, discriminator):
+        super(ImageColoringGanModel, self).__init__()
+        self.generator = generator
+        self.discriminator = discriminator
+
+    def call(self, inputs):
+        # TODO: Port the forward pass for GAN
+        #   This is similar to the define_gan in the post.
+        #   However, it will be converted to TF2 style.
+        pass
